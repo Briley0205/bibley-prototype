@@ -1,0 +1,6 @@
+input(type="checkbox", id="search-check")
+div(class="search-box")
+    form(method="GET", action="/search")#global-search
+        input(type="text", placeholder="Search by title", name="keyword", id="search", autocomplete="off")
+        label(for="search-check", class="icon")
+            ion-icon(name="search-outline")

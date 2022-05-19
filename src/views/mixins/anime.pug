@@ -1,0 +1,6 @@
+mixin anime(animeInfo)
+    button(id=`${animeInfo.id}`).anime-mixin
+        div.anime-mixin__img
+            img(src=`${animeInfo.coverImage.large}`)
+        div.anime-mixin__data
+            span.anime-mixin__title=animeInfo.title.english

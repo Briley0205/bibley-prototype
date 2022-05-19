@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=M+PLUS+Rounded+1c:wght@400&display=swap');
+#main-header {
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.04)
+  );
+  z-index: 5;
+  .main-header__inner {
+    height: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .main-header__title {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.top-header__menu {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  ion-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+}
+.welcome-title__block {
+  display: flex;
+  justify-content: space-around;
+  .welcome-message {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    h1 {
+      font-size: 30px;
+    }
+    .welcome-message-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 8px 0px;
+      p {
+        font-size: 17px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+#logo {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+

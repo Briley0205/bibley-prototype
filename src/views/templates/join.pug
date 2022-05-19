@@ -1,0 +1,26 @@
+extends ../login-base
+
+block contents
+    div(class="loginBox__Contents")
+        div(class="loginBox__Join-contents")
+            if !loggedIn
+                form(method="POST")
+                    div(class="join-label-input-wrapper")
+                        label(for="email") e-mail
+                        input(name="email", type="email", id="email", placeholder="XXXX@XXXX", required)
+                    div(class="join-label-input-wrapper")
+                        label(for="username") username
+                        input(name="username", type="text", id="username", placeholder="Bibley", required)
+                    div(class="join-label-input-wrapper")
+                        label(for="password") password
+                        input(name="password", type="password", placeholder="It must be text", id="password", required)
+                    div(class="join-label-input-wrapper")
+                        label(for="password-confirmation") password-confirmation
+                        input(name="password2", type="password", placeholder="It must be same", id="password-confirmation", required)
+                    input(type="submit", value="Join")
+                    if errorMessage
+                        div#join-errorMessage
+                            span=errorMessage
+            if loggedIn
+                div#already-login
+                    span You're already logged in here.

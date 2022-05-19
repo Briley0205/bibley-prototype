@@ -1,0 +1,23 @@
+extends ../edit-base
+
+block edit-forms
+    div.edit-profile-img-wrapper
+        img(src=`${loggedInUser.avatarUrl}`, onclick="imgInput__click()", width="100px", style="cursor:pointer;")
+        ion-icon(name="camera")
+    form(method="POST", enctype="multipart/form-data")
+        div.avatar-input-container
+            input(type="file", id="avatar", name="avatar", accept=".png, .jpg, .jepg", hidden)
+        div.edit-info-change
+            input(name="email", placeholder="email", type="email", required, value=loggedInUser.email).change-info-input
+            input(name="username", type="text" placeholder="User name", required, value=loggedInUser.username).change-info-input
+        input(type="submit", value="Update Profile").update-info-btn
+        if !loggedInUser.socialOnly
+            div.change-password-link
+                a(href="change-password") Change Password &rarr;
+
+block scripts
+    script(type='text/javascript').
+        const avatarFileInput = document.querySelector("#avatar");
+        function imgInput__click() {
+            avatarFileInput.click();
+        }

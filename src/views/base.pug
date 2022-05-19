@@ -1,0 +1,25 @@
+include ./mixins/message.pug
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="icon", href="/static/images/Logo-piyo.svg")
+        link(rel="stylesheet", href="/static/css/styles.css")
+        title #{pageTitle} | Bibley
+    body
+        if messages.error
+            +message("error", messages.error)
+        if messages.info
+            +message("info", messages.info)
+        include ./partials/header
+        main
+            block content
+        div#overlay
+        include ./partials/modal
+        include ./partials/nav-column
+        block scripts
+        script(type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js")
+        script(nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js")
+        script(src="/static/js/columnMenu.js")

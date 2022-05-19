@@ -1,0 +1,75 @@
+.edit-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    max-width: 450px;
+    min-height: 300px;
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.2);
+    form {
+        width: 90%;
+        .change-password-link {
+            margin-top: 8px;
+            padding-left: 10px;
+            color: #065fd4;
+            font-weight: 600;
+        }
+    }
+}
+.edit-form-wrapper {
+    width: 100%;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+.edit-profile-img-wrapper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid rgba(149, 157, 165, 0.2);
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+    ion-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 24px;
+        color: rgba(50, 50, 50, 0.8)
+    }
+}
+.edit-info-change {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.change-info-input {
+    all: unset;
+    caret-color: #111;
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+}
+.update-info-btn {
+    all: unset;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1683ff;
+    cursor: pointer;
+}

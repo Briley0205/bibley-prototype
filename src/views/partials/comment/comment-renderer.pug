@@ -1,0 +1,18 @@
+each comment in video.comments.reverse()
+    div.comment-thread-renderer(data-id=comment.id)
+        div.comment-renderer
+            div#comment-body
+                div#author-thumbnail.author-thumbnail
+                    a(href=`/users/${comment.owner._id}`)
+                        img(src=`${comment.ownerAvatarUrl}`)
+                div(mode="main")#comment-dialog
+                    div(mode="header")#comment-main__header
+                        div#header-author
+                            span#author-username #{comment.username}
+                            span#commented-time #{comment.createdAt}
+                    div(mode="expander")#comment-main__expander
+                        p #{comment.text}
+                div#comment-action-menu
+                    div.comment-menu-renderer
+                        if (loggedInUser._id === String(comment.owner._id))
+                            ion-icon(name="trash")

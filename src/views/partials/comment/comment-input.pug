@@ -1,0 +1,11 @@
+div.comment-dialog-renderer
+    form.comment-box#commentForm
+        div.thumbnail-input-row
+            div.author-thumbnail
+                img(src=`${loggedInUser.avatarUrl}`)
+            div#comment-main
+                textarea#comment-creation-box(placeholder="write a comment...", data-id="textarea", style="caret-color:black;", cols="20", wrap="hard")
+                div.comment-footer
+                    div.comment-buttons
+                        button.button-renderer#cancel-button(type="button") cancel
+                        button.button-renderer#submit-button comment

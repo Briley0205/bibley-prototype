@@ -1,0 +1,66 @@
+extends ../base.pug
+include ../mixins/aside-video.pug
+
+block content
+    div.main_watch#watch-container
+        div.main_watch__video-wrapper
+            div.main-watch__video-wrapper-inner
+                include ../partials/watch-video
+                section.watch-video-meta-data
+                    article#video-meta-data
+                        div#title
+                            div#super-title
+                                ul.super-title__ul
+                                    each hashtags in video.hashtags
+                                        li=hashtags
+                                        span(style="width:5px;")
+                            h1=video.title
+                        div#description-and-actions
+                            div#description
+                                div=video.description
+                            div#actions
+                                div.video-meta-data-action
+                                    div.video-meta-actions#heart
+                                        span.heart
+                                        span.like-text Like
+                                        span.like-numb=video.meta.favorites
+                        div#owner
+                            div(data-id=`${video.owner._id}`).owner-info
+                                div.owner-info__left
+                                    a(href=`/users/${video.owner._id}`).owner-info__img
+                                        img(src=`${video.owner.avatarUrl}`)
+                                    div#watch-owner-name
+                                        p
+                                            a(href=`/users/${video.owner._id}`)=video.owner.username
+                                        span 구독자
+                                        span.subscribe-numb=video.owner.meta.subscribe
+                                div.owner-info__right
+                                    if String(video.owner._id) === String(loggedInUser._id)
+                                        a(href=`${video.id}/delete`).owner-info-button Delete video
+                                        a(href=`${video.id}/edit`).owner-info-button Edit video
+                                    else
+                                        div.owner-info__subscribe
+                                            span subscribe
+                section.watch-video-meta-data.watch-comments
+                    div.comments-section-header
+                        h3 #{video.comments.length} comments
+                        if loggedIn
+                            include ../partials/comment/comment-input.pug
+                    div.comments-section-contents
+                        include ../partials/comment/comment-renderer.pug
+        div.main_watch__recomendations-warpper
+            div.recomendations-warpper-inner
+                each videoInfo in asideVideo
+                    +aside-video(videoInfo)
+    div.video__comments-form-wrapper
+        section.watch-video-meta-data.watch-comments#secondary_comments-section
+            div.comments-section-header
+                h3 #{video.comments.length} comments
+                if loggedIn
+                    include ../partials/comment/comment-input.pug
+            div.comments-section-contents
+                include ../partials/comment/comment-renderer.pug
+block scripts
+    script(src="/static/js/videoPlayer.js")
+    if loggedIn
+        script(src="/static/js/commentSection.js")

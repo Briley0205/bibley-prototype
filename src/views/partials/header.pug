@@ -1,0 +1,29 @@
+header(id="main-header")
+    div(class="main-header__inner")
+        div(class="main-header__title")
+            div.top-header__menu
+                ion-icon(name="menu")
+            div(class="top-header__title")
+                a(href="/")
+                    h1(id="logo") Bibley
+            div(class="top-header__logo")
+                a(href="/")
+                    include ../icon/Logo-piyo.svg
+        div(class="main-header__right")
+            div(class="main-header__search")
+                include ./search
+            div.main-header__theme-toggle
+                label.theme-toggle
+                    input(type="checkbox")
+                    span
+            if loggedIn
+                div(class="main-header__nav")
+                    include ./nav
+            else
+                div(class="main-header__login")
+                    div(class="main-header__join")
+                        a(href="/auth") Login / Join
+            
+            div(class="main-header__nav-toggle")
+                div(class="nav-toggle__content")
+                    ion-icon(name="menu-outline")

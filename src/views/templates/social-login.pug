@@ -1,0 +1,23 @@
+extends ../login-base.pug
+
+block contents
+     div(class="loginBox__Contents")
+        div(class="loginBox__SocialLogin-contents")
+            if !loggedIn
+                div(class="socialLogin-box")
+                    a(href="/auth/github/start" class="social-login")
+                        ion-icon(name="logo-github")
+                        span Continue with Github
+                    a(href="/auth/kakao/start" class="social-login")
+                        include ../icon/speech-bubble.svg
+                        span Continue with Kakao
+                    a(href="/auth/google/start" class="social-login")
+                        include ../icon/google.svg
+                        span Continue with Google
+                    if errorMessage
+                        div#join-errorMessage
+                            span=errorMessage
+            if loggedIn
+                div(class="socialLogin-box")
+                    div#alert
+                        span You're already logged in here.

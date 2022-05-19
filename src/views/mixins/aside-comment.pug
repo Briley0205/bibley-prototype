@@ -1,0 +1,6 @@
+mixin aside-comment(commentInfo)
+    div.aside-comment-mixin__data
+        p.aside-comment-mixin__text #{commentInfo.text}
+        div.comment-mixin__meta
+            p.comment-mixin__meta__username #{commentInfo.username}
+            p.comment-mixin__meta__created #{commentInfo.createdAt}

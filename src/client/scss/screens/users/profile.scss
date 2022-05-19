@@ -1,0 +1,66 @@
+.channel-container {
+  margin-left: 72px;
+}
+.profile-videos-wrapper {
+  width: calc(100% - 72px);
+  margin-left: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .profile-home-array {
+    display: flex;
+    justify-content: center;
+  }
+  section {
+    width: calc((100vw - 72px) / 3);
+    margin: 0 16px;
+    background: #fff;
+    padding: 30px;
+  }
+}
+.profile__data {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4px;
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+}
+.profile-section-title {
+  width: 115px;
+  border-top: 2px solid rgba(0, 0, 0, 0.4);
+  padding-top: 10px;
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 0 25px 2px;
+  }
+}
+.aside-comment-mixin__data {
+  padding: 30px 10px;
+  border-bottom: 1px solid #d8d8d8;
+  overflow: auto;
+  .aside-comment-mixin__text {
+    white-space: pre-line;
+    line-height: 120%;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  .comment-mixin__meta {
+    font-size: 13px;
+    color: #606060;
+    p {
+      padding-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+extends ../base
+include ../mixins/home-video-array
+
+block content
+    div.trending-animeInfo__column
+    div.video__grid
+        each videoInfo in videos
+            +video(videoInfo)
+        else
+            li Sorry nothing found

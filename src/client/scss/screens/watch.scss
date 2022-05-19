@@ -1,0 +1,484 @@
+#watch-container {
+    display: flex;
+    justify-content: center;
+    .main_watch__video-wrapper {
+        max-width: calc( ( 100vh - ( 216px ) ) * (16 / 9) );
+        min-width: calc(240px * 16 / 9);
+        padding: 0 1.5rem;
+        width: 100%;
+        .main-watch__video-wrapper-inner {
+            width: 100%;
+            background: #fff;
+            #player {
+                position: relative;
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+                video::cue {
+                    font-size: 65%;
+                    line-height: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                }
+                video.captionsHidden::cue {
+                    color: transparent;
+                    background: transparent;
+                }
+                #play-pannel-wrapper {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: none;
+                    visibility: hidden;
+                    .play-pannel {
+                        color: transparent;
+                        display: none;
+                        animation: playBtnAnimation 500ms linear;
+                        animation-play-state: paused;
+                    }
+                    .pause-pannel {
+                        color: transparent;
+                        display: none;
+                        animation: playBtnAnimation 500ms linear;
+                        animation-play-state: paused;
+                    }
+                }
+                #play-pannel-wrapper.play {
+                    display: block;
+                    visibility: visible;
+                    .play-pannel {
+                        animation-play-state: running;
+                        display: block;
+                        ion-icon {
+                            font-size: 6rem;
+                        }
+                    }
+                }
+                #play-pannel-wrapper.pause {
+                    display: block;
+                    visibility: visible;
+                    .pause-pannel {
+                        animation-play-state: running;
+                        display: block;
+                        ion-icon {
+                            font-size: 6rem;
+                        }
+                    }
+                }
+                #video-controler {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 0 0.5rem;
+                    opacity: 0;
+                    transition: opacity .3s ease-in-out;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: 0.5px;
+                        left: 0;
+                        right: 0;
+                        height: 10rem;
+                        background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.008) 8%, rgba(0, 0, 0, 0.027) 15.3%, rgba(0, 0, 0, 0.063) 21.9%, rgba(0, 0, 0, 0.106) 28.1%, rgba(0, 0, 0, 0.157) 33.9%, rgba(0, 0, 0, 0.21) 39.5%, rgba(0, 0, 0, 0.27) 45%, rgba(0, 0, 0, 0.33) 50.5%, rgba(0, 0, 0, 0.39) 56.2%, rgba(0, 0, 0, 0.443) 62.1%, rgba(0, 0, 0, 0.494) 68.4%, rgba(0, 0, 0, 0.537) 75.2%, rgba(0, 0, 0, 0.573) 82.7%, rgba(0, 0, 0, 0.592) 90.9%, rgba(0, 0, 0, 0.6) 100%);
+                        pointer-events: none;
+                    }
+                    &.show {
+                        opacity: 1;
+                    }
+                    .progress-bar-container {
+                        padding: 0 1rem;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        div {
+                            z-index: 1;
+                            color: #fff;
+                        }
+                        .progressArea {
+                            height: 4px;
+                            background: rgba(250, 250, 250, 0.2);
+                            margin: auto;
+                            width: 100%;
+                            cursor: pointer;
+                            .progress-bar {
+                                background: $strawberry2;
+                                height: inherit;
+                                position: relative;
+                                width: 0;
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    width: 13px;
+                                    height: 13px;
+                                    border-radius: 50%;
+                                    right: -5px;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    background: $strawberry2;
+                                }
+                            }
+                        }
+                    }
+                    .chrome-controller-container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        height: 48px;
+                        line-height: 48px;
+                        color: #fff;
+                        .video-left-controllers, .video-right-controllers {
+                            display: flex;
+                            #currentTime, .devider, #leftTime {
+                                z-index: 1;
+                                padding-left: 10px;
+                            }
+                            .volume-controller {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 48px;
+                                width: auto;
+                                .volume-icon {
+                                    width: 48px;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                        
+                                }
+                                input {
+                                    -webkit-appearance: none;
+                                    appearance: none;
+                                    width: 4rem;
+                                    height: 3px;
+                                    background: rgba(255, 255, 255, 0.5);
+                                    cursor: pointer;
+                                    border: none;
+                                    z-index: 1;
+                                    &::-webkit-slider-thumb {
+                                        -webkit-appearance: none;
+                                        appearance: none;
+                                        width: 11px;
+                                        height: 11px;
+                                        border-radius: 50%;
+                                        border: none;
+                                        outline: none;
+                                        background: #fff;
+                                    }
+                                }
+                                ion-icon {
+                                    font-size: 1.5rem;
+                                }
+                            }
+                            .controller-icon {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 48px;
+                                height: 48px;
+                                ion-icon {
+                                    font-size: 1.3rem;
+                                }
+                                span {
+                                    width: 100%;
+                                    height: 3px;
+                                    margin-top: 3px;
+                                    background: $strawberry2;
+                                    border-radius: 5px;
+                                }
+                                span.hidden {
+                                    display: none;
+                                }
+                                .captionBox {
+                                    display: flex;
+                                    flex-direction: column;
+                                    z-index: 2;
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }   
+            #settings {
+                position: absolute;
+                bottom: 65px;
+                left: 1.5rem;
+                background: rgba(0, 0, 0, 0.5);
+                width: 12rem;
+                height: 14rem;
+                color: #fff;
+                overflow-y: scroll;
+                z-index: 2;
+                display: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .playback {
+                    span {
+                        position: sticky;
+                        top: 0;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        padding: 15px 30px;
+                        display: block;
+                        background: rgba(50, 50, 50, 0.9);
+                        z-index: 3;
+                    }
+                    ul {
+                        position: relative;
+                        li {
+                            position: relative;
+                            width: 100%;
+                            cursor: pointer;
+                            padding: 15px 30px;
+                            &:hover {
+                                background: rgba(255, 255, 255, 0.2);
+                            }
+                        }
+                        li.active {
+                            &::before {
+                                content: '';
+                                width: 5px;
+                                height: 10px;
+                                border-bottom: 2px solid #fff;
+                                border-right: 2px solid #fff;
+                                position: absolute;
+                                left: 12px;
+                                transform: rotate(45deg);
+                            }
+                        }
+                    }
+                }
+            }
+            #settings.active {
+                display: block;
+            }
+        }
+    }
+    .main_watch__recomendations-warpper {
+        padding-right: 1.5rem;
+        .recomendations-warpper-inner {
+            background: #fff;
+            width: 25rem;
+            height: 100%;
+            padding-bottom: 8px;
+        }
+    }
+}
+.aside-video-mixin {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0 0 8px;
+    .aside-video-mixin__thumb {
+        height: 5.9rem;
+        width: 10.5rem;
+        margin-right: 0.5rem;
+    }
+    .aside-video-mixin__data {
+        width: 13rem;
+        span {
+            font-size: 1rem;
+            display: block;
+            margin: 0.2rem 0 0.75rem 0;
+        }
+    }
+}
+.watch-video-meta-data {
+    width: 100%;
+    padding: 1.5rem 0.75rem;
+    position: relative;
+    #title {      
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+    }
+    #description-and-actions {
+        margin-top: 0.75rem;
+        max-width: 45rem;
+        #description {
+            div {
+                line-height: 120%;
+                white-space: pre-line;
+            }
+        }
+    }
+    #owner {
+        width: 100%;
+        height: 4rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+    }
+}
+.owner-info {
+    display: flex;
+    justify-content: space-between;
+    .owner-info__left, .owner-info__right {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        height: 3rem;
+    }
+    .owner-info__right {
+        flex-direction: column;
+    }
+    img {
+        width: 3rem;
+        height: 3rem;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+    .owner-info-button {
+        color: #065fd4;
+        width: 7rem;
+        margin-bottom: 5px;
+    }
+    #watch-owner-name {
+        margin-left: 0.5rem;
+        span {
+            font-size: 0.8rem;
+            color: #606060;
+            margin-right: 5px;
+        }
+    }
+}
+.owner-info__subscribe {
+    background: #c00;
+    width: 4.95rem;
+    height: 100%;
+    border-radius: 3px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    cursor: pointer;
+    span {
+        font-weight: 300;
+    }
+}
+.video__comments-form-wrapper {
+    width: 100%;
+    padding: 0 1.5rem;
+    min-height: 300px;
+}
+#super-title {
+    font-size: 0.8rem;
+    color: #065fd4;
+    margin-bottom: 8px;
+    .super-title__ul {
+        display: flex;
+    }
+}
+#actions {
+    cursor: pointer;
+}
+#secondary_comments-section {
+    display: none;
+    background-color: #fff;
+    min-width: 378px;
+}
+
+@keyframes playBtnAnimation {
+    0% {
+        transform: scale(1);
+        color:rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        transform: scale(1.5);
+        color:rgba(0, 0, 0, 0);
+    }
+}
+
+@media (max-width: 1000px) {
+    #watch-container {
+        flex-direction: column;
+        .main_watch__recomendations-warpper {
+            width: 100%;
+            padding: 0 1.5rem;
+            min-height: 300px;
+            .recomendations-warpper-inner {
+                min-width: 378px;
+                width: 100%;
+            }
+        }
+        .aside-video-mixin__data {
+            min-width: 0;
+            flex: 1;
+        }
+    }
+    .watch-comments {
+        display: none;
+    }
+    #secondary_comments-section {
+        display: block;
+    }
+}
+#actions {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+.video-meta-data-action {
+    position: relative;
+}
+#heart {
+    padding: 13px 16px;
+    display: flex;
+    border: 1px solid #eae2e1;
+    border-radius: 3px;
+    cursor: pointer;
+    span {
+        color: gray;
+        &.heart-active{
+            color: #000;
+        }
+    }
+    &.heart-active {
+        border-color: #f9b9c4;
+        background: #fbd0d8;
+    }
+}
+.heart{
+    position: absolute;
+    background: url("http://localhost:4500/static/images/heart.png") no-repeat;
+    background-position: left;
+    background-size: 2900%;
+    height: 60px;
+    width: 60px;
+    top: 50%;
+    left: 24px;
+    transform: translate(-50%,-50%);
+    &.heart-active {
+        animation: heart .8s steps(28) 1;
+        background-position: right;
+    }
+}
+.like-text {
+    margin-left: 24px;
+}
+.like-numb {
+    margin-left: 5px;
+}
+@keyframes heart {
+    0%{
+      background-position: left;
+    }
+    100%{
+      background-position: right;
+    }
+}
+@media (max-width: 750px) {
+    #actions {
+        margin-top: 15px;
+        position: static;
+    }
+}

@@ -1,0 +1,25 @@
+.video__grid {
+    padding: 0 1.5rem 5rem 72px;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 21rem));
+    justify-content: center;
+}
+.video-mixin {
+    .video-mixin__thumb {
+        height: 13rem;
+        width: 100%;
+    }
+    .video-mixin__data {
+        padding: 0 0.315rem;
+    }
+}
+.video-mixin__title {
+    font-size: 1.149rem;
+    display: block;
+    margin-top: 0.624rem;
+}
+.video-mixin__meta {
+    margin-top: 0.312rem;
+    font-size: 0.8rem;
+}

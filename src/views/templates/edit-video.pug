@@ -1,0 +1,17 @@
+extends ../base
+
+block content
+    form(method="POST", enctype="multipart/form-data").upload-video
+        div.upload-input-container
+            label(for="thumb") Thumbnail
+            input(name="thumb", type="file", accept="image/*", id="thumb").change-info-input
+            label(for="captions") Captions
+            input(name="captions", type="file", id="captions", accept=".vtt").change-info-input
+            div.video-info-wrapper
+                div.video-info
+                    textarea(name="description", cols="30", rows="5", form="upload-video-form", placeholder="Video Description (Press enter if you want to shift the line.)", required, type="text", wrap="hard")#input-video-description=videos.description
+                div.video-meta
+                    input(name="title", placeholder="New video title",value=videos.title, required).change-info-input
+                    input(name="hashtags", placeholder="Hashtags, separated by comma.", value=videos.hashtags.join(), required, type="text").change-info-input
+            input(value="Save", type="submit")#input-video-submitBtn
+

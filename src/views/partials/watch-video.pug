@@ -1,0 +1,50 @@
+div.video-wrapper-inner#player(data-id=video._id)
+    video(src="/" + video.fileUrl, autoplay, allowfullscreen, loop)
+        if video.captionsUrl
+            track(default src="/" + video.captionsUrl kind="captions" srclang="ko" label="Japanese Korean Captions")
+    div#play-pannel-wrapper
+        div.play-pannel
+            ion-icon(name="play-circle")
+        div.pause-pannel
+            ion-icon(name="pause-circle")
+    div#video-controler
+        div.progress-bar-container
+            div.progressArea
+                div.progress-bar(role="slider")
+                    span
+        div.chrome-controller-container
+            div.video-left-controllers
+                div.controller-icon#fullScreen
+                    ion-icon(name="scan-sharp")
+                div.controller-icon#play-speed
+                    ion-icon(name="settings")
+                div.volume-controller#volume
+                    div.volume-icon
+                        ion-icon(name="volume-high")#volume-icon
+                    input(type="range", min="0", max="100")#volume-range
+                div#currentTime 00:00
+                div.devider  / 
+                div#leftTime 00:00
+            div.video-right-controllers
+                div.controller-icon#captions
+                    div.captionBox
+                        ion-icon(name="receipt-outline")
+                        span
+                div.controller-icon#play-back
+                    ion-icon(name="play-back-sharp")
+                div.controller-icon#play
+                    ion-icon(name="play-sharp")
+                div.controller-icon#play-forward
+                    ion-icon(name="play-forward-sharp")
+    div#settings
+        div.playback
+            span Playback Speed
+            ul
+                li(data-speed="0.25") 0.25
+                li(data-speed="0.5") 0.5
+                li(data-speed="0.75") 0.75
+                li(data-speed="1").active Normal
+                li(data-speed="1.25") 1.25
+                li(data-speed="1.5") 1.5
+                li(data-speed="1.75") 1.75
+                li(data-speed="2") 2

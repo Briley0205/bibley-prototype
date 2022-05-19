@@ -1,0 +1,18 @@
+extends ../login-base
+
+block contents
+    div(class="loginBox__Contents")
+        a(href="/")#home Bibley
+        div#loginBox__authSelect
+            div(class="loginBox__auth-land")
+                div(class="auth-land__letters")
+                    p Watch Videos,
+                    p And Learn Foreign Languages
+                    p By Creating And Reading Subtitles!
+                a(href="/auth/email_login")#auth-land__Email-loginBtn Log in with email
+                div(class="auth-land__AlternativeButtons")
+                    a(href="/auth/email_join")#auth-land__AlternativeA Join with email
+                    a(href="/auth/social_login")#auth-land__AlternativeB Social login
+
+//- make it better
+ "Password confirmation does not match."

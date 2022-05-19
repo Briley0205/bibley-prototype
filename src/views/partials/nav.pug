@@ -1,0 +1,34 @@
+ul
+    li(class="nav__list")
+        div(class="nav__icon")
+            span(class="nav__list__ico")
+                ion-icon(name="videocam-outline")
+            span(class="nav__list__text") Video
+        div(class="video-option")
+            a(href="/videos/upload")
+                ion-icon(name="cloud-upload-outline")
+                span Upload Video
+    li(class="nav__list")
+        div(class="nav__icon")
+            span(class="nav__list__ico")
+                ion-icon(name="person-outline")
+            span(class="nav__list__text") User
+        div(class="option")
+            a(href=`/users/${loggedInUser._id}`)
+                ion-icon(name="home-outline")
+                span My Room
+            a(href="/users/edit")
+                ion-icon(name="hammer-outline")
+                span Edit Profile
+            a(href="/users/logout")
+                ion-icon(name="exit-outline")
+                span Log Out
+            div
+                ion-icon(name="chevron-up-outline")
+    li(class="nav__list")
+        div(class="nav__icon")
+            span(class="nav__list__ico")
+                ion-icon(name="notifications-outline")
+            span(class="nav__list__text") Notice
+        div(class="notice__list")
+            span No notification yet.

@@ -1,0 +1,34 @@
+extends ../base
+
+block content
+    if errorMessage
+        span=errorMessage
+    form(method="POST", enctype="multipart/form-data", id="upload-video-form", class="upload-video")
+        div(class="upload-input-container")
+            h3 Upload your video file
+            div(class="upload-drag-area")
+                div(class="upload-drag-area__icon")
+                    ion-icon(name="cloud-upload-outline")
+                span(class="upload-drag-area__header") Drag & Drop 
+                span(class="upload-drag-area__header") or 
+                    span(class="upload-drag-area__button") browse
+            input(name="video", type="file", accept="video/*", id="video", class="upload-drag-area__input", hidden)
+            div.video-info-wrapper
+                div.video-info
+                    input(name="title", placeholder="Video title", type="text", maxlength=80).input-video
+                    textarea(name="description", cols="30", rows="5", form="upload-video-form", placeholder="Video Description (Press enter if you want to shift the line.)", required, wrap="hard")#input-video-description
+                div.video-meta
+                    div.captions-upload-area
+                        label(for="captions") Select Captions (not required)
+                        input(name="captions", type="file", id="captions", accept=".vtt", hidden)
+                    input(name="hashtags", type="text", placeholder="#upload,#video,#hashtags", required).input-video
+                    div.thumbnail-upload-area
+                        div.thumbnail-upload-area__icon
+                            ion-icon(name="image-outline")
+                        span.thumbnail-upload-area__button browse
+                        span to upload a thumbnail
+                    input(name="thumb", type="file", accept="image/*", id="thumb", hidden, required).upload-drag-area__input
+
+            input(type="submit", value="Upload Video")#input-video-submitBtn
+block scripts
+    script(src="/static/js/dropUploadVideo.js") 

@@ -1,0 +1,51 @@
+div(class="nav-column")
+    div(class="nav-column__exit")
+        ion-icon(size="large", name="close-outline")
+    if loggedIn
+        div(mode="header", class="profileInfo__Block")
+            div(class="profileInfo__Block__info")
+                div.user-avatar-wrapper
+                    img(src=`${loggedInUser.avatarUrl}`)
+                div(class="nametag")
+                    div(class="user-name") #{loggedInUser.username}
+                    a(class="manage-user" href="/users/edit") Edit Profile
+            a(class="profileInfo__Block__My-room")
+                span My inventory
+        hr(class="nav-column__split")
+        ul(class="nav-column__list-start")
+            li(class="column__list")
+                a(href="#")
+                    span(class="nav-column__ico")
+                        ion-icon(name="home-outline")
+                    span(class="nav-column__font") My Room
+            li(class="column__list")
+                a(href="/users/edit")
+                    span(class="nav-column__ico")
+                        ion-icon(name="hammer-outline")
+                    span(class="nav-column__font") Setting
+        hr
+        ul
+            li(class="column__list")
+                a(href="/videos/upload")
+                    span(class="nav-column__ico")
+                        ion-icon(name="videocam-outline")
+                    span(class="nav-column__font") Upload Video
+        hr
+        ul
+            li(class="column__list")
+                a(href="/users/logout")
+                    span(class="nav-column__ico")
+                        ion-icon(name="exit-outline")
+                    span(class="nav-column__font") Log Out
+    else 
+        div(mode="header", class="welcome__Block")
+            div(class="welcome-title__block")
+                div(class="welcome-message")
+                    h1(id="logo") Bibley
+                    div(class="welcome-message-box")
+                        p Welcome to
+                        p bibley !
+                include ../icon/Logo-piyo-medium.svg
+            a(href="/auth", class="welcome-title__loginBtn") 
+                span Login / Join
+        hr(class="nav-column__split")
