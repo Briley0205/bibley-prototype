@@ -94,9 +94,9 @@ export const postVideoUpload = async(req, res) => {
             description,
             createdAt: new Date(Date.now()).toLocaleDateString(),
             hashtags: Video.formatHashtags(hashtags),
-            fileUrl: video[0].path,
-            thumbUrl: Video.changePathFormula(thumb[0].path),
-            captionsUrl: captions ? captions[0].path : "",
+            fileUrl: video[0].location,
+            thumbUrl: Video.changePathFormula(thumb[0].location),
+            captionsUrl: captions ? captions[0].location : "",
             owner: _id,
         });
         const user = await User.findById(_id);
@@ -145,8 +145,8 @@ export const postEdit = async(req, res) => {
     await Video.findByIdAndUpdate(id, {
         title, 
         description,
-        thumbUrl: thumb ? Video.changePathFormula(thumb[0].path) : videos.thumbUrl,
-        captionsUrl: captions ? captions[0].path : videos.captionsUrl,
+        thumbUrl: thumb ? Video.changePathFormula(thumb[0].location) : videos.thumbUrl,
+        captionsUrl: captions ? captions[0].location : videos.captionsUrl,
         hashtags: Video.formatHashtags(hashtags),
     });
     req.flash("info", "video was edited");
