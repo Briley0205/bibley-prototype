@@ -237,32 +237,28 @@ const likeSpan = likeBtn.querySelectorAll("span");
 const likeNumber = likeBtn.querySelector(".like-numb");
 let heartNumber = Number(likeNumber.innerHTML);
 const handleHeartActive = async(id) => {
+    heartNumber += 1;
+    likeNumber.innerText = heartNumber;
+    likeBtn.classList.add("heart-active");
+    likeSpan.forEach(likeSpan => likeSpan.classList.add("heart-active"));
     const response = await fetch(`/api/videos/${id}/favorites`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
     });
-    if(response.status === 200) {
-        likeBtn.classList.add("heart-active");
-        likeSpan.forEach(likeSpan => likeSpan.classList.add("heart-active"));
-        heartNumber += 1;
-        likeNumber.innerText = heartNumber;
-    }
 }
 const handleHeartDeactivate = async(id) => {
+    likeBtn.classList.remove("heart-active");
+    likeSpan.forEach(likeSpan => likeSpan.classList.remove("heart-active"));
+    heartNumber -= 1;
+    likeNumber.innerText = heartNumber;
     const response = await fetch(`/api/favorites/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
     });
-    if(response.status === 200) {
-        likeBtn.classList.remove("heart-active");
-        likeSpan.forEach(likeSpan => likeSpan.classList.remove("heart-active"));
-        heartNumber -= 1;
-        likeNumber.innerText = heartNumber;
-    }
 }
 const handleLike = async() => {
     const { id } = videoPlayer.dataset;
