@@ -11,7 +11,7 @@ const s3 = new aws.S3({
 const multerS3Uploader = multerS3({
     s3: s3,
     bucket: "bibley",
-    acl: "pulic-read",
+    acl: "public-read",
 });
 //console.log(multerS3Uploader.s3.credentials);
 
