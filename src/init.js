@@ -13,7 +13,7 @@ import "./models/Comment";
 /**Get express application */
 import app from "./server";
 
-const PORT = 4500;
+const PORT = process.env.PORT || 4500;
 
 const checkServrListening = () => console.log("I'm ready to hear your request!💌");
 
