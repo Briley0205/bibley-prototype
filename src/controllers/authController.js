@@ -68,7 +68,7 @@ export const startKakaoLogin = (req, res) => {
     const baseUrl = "https://kauth.kakao.com/oauth/authorize";
     const config = {
         client_id: process.env.KAKAO_CLIENT,
-        redirect_uri: "http://localhost:4500/auth/kakao/finish",
+        redirect_uri: "https://bibley.herokuapp.com/auth/kakao/finish",
         response_type: "code",
         scope: "profile_nickname profile_image account_email"
     }
@@ -82,7 +82,7 @@ export const finishKakaoLogin = async(req, res) => {
         client_id: process.env.KAKAO_CLIENT,
         client_secret: process.env.KAKAO_SECRET,
         grant_type: "authorization_code",
-        redirect_uri: "http://localhost:4500/auth/kakao/finish",
+        redirect_uri: "https://bibley.herokuapp.com/auth/kakao/finish",
         code: req.query.code
     }
     const params = new URLSearchParams(config).toString();
@@ -129,7 +129,7 @@ export const startGoogleLogin = (req, res) => {
     const baseUrl = "https://accounts.google.com/o/oauth2/v2/auth";
     const config = {
         client_id: process.env.GG_CLIENT,
-        redirect_uri: "http://localhost:4500/auth/google/finish",
+        redirect_uri: "https://bibley.herokuapp.com/auth/google/finish",
         response_type: "code",
         include_granted_scopes: true,
         scope: ["https://www.googleapis.com/auth/userinfo.email",
@@ -144,7 +144,7 @@ export const finishGoogleLogin = async(req, res) => {
     const config = {
         client_id: process.env.GG_CLIENT,
         client_secret: process.env.GG_SECRET,
-        redirect_uri: "http://localhost:4500/auth/google/finish",
+        redirect_uri: "https://bibley.herokuapp.com/auth/google/finish",
         include_granted_scopes: true,
         grant_type: "authorization_code",
         code: req.query.code

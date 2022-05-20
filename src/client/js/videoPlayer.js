@@ -277,32 +277,28 @@ if(subscribeBtn) {
     const subscribeNumbBox = document.querySelector(".subscribe-numb");
     let subscribeNumb = Number(subscribeNumbBox.innerHTML);
     const activeSubscribe = async(id) => {
+        subscribeBtn.style.background = "rgb(230, 230, 230)";
+        subscribeSpan.style.color = "#8c8c8c";
+        subscribeNumb += 1;
+        subscribeNumbBox.innerText = subscribeNumb;
         const response = await fetch(`/api/users/${id}/subscribe`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
         });
-        if(response.status === 200) {
-            subscribeBtn.style.background = "rgb(230, 230, 230)";
-            subscribeSpan.style.color = "#8c8c8c";
-            subscribeNumb += 1;
-            subscribeNumbBox.innerText = subscribeNumb;
-        }
     }
     const deactiveSubscribe = async(id) => {
+        subscribeBtn.style.background = "#c00";
+        subscribeSpan.style.color = "#fff";
+        subscribeNumb -= 1;
+        subscribeNumbBox.innerText = subscribeNumb;
         const response = await fetch(`/api/subscribe/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
         });
-        if(response.status === 200) {
-            subscribeBtn.style.background = "#c00";
-            subscribeSpan.style.color = "#fff";
-            subscribeNumb -= 1;
-            subscribeNumbBox.innerText = subscribeNumb;
-        }
     }
     const handleSubscribe = () => {
         const { id } = videoPlayer.dataset;
