@@ -38,15 +38,15 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
 }));
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Methods", 'GET,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Content-type');
+    res.setHeader("Access-Control-Allow-Origin", '*');
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    res.setHeader("Access-Control-Allow-Methods", 'GET,POST,DELETE,OPTIONS');
+    res.setHeader("Access-Control-Allow-Headers", 'Content-type');
     next();
 })
 app.use(cors({
-    origin: 'https://bibley.herokuapp.com'
-}));
+    origin: '*'
+}))
 
 app.use(flash());
 app.use(localsMiddleware);
