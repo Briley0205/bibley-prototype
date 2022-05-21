@@ -1,7 +1,7 @@
 div.video-wrapper-inner#player(data-id=video._id)
-    video(src="" + video.fileUrl, autoplay, allowfullscreen, loop)
+    video(src="" + video.fileUrl, autoplay, allowfullscreen, loop, crossorigin="anonymous")
         if video.captionsUrl
-            track(default src="" + video.captionsUrl kind="captions" srclang="ko" label="Japanese Korean Captions" crossorigin="anonymous")
+            track(default src="" + video.captionsUrl kind="captions" srclang="ko" label="Japanese Korean Captions")
     div#play-pannel-wrapper
         div.play-pannel
             ion-icon(name="play-circle")
