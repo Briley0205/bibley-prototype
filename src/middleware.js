@@ -8,12 +8,18 @@ const s3 = new aws.S3({
         secretAccessKey: process.env.AWS_SECRET,
     }
 });
-const multerS3Uploader = multerS3({
+const s3ImageUploader = multerS3({
     s3: s3,
-    bucket: "bibley",
+    bucket: "bibley/images",
     acl: "public-read",
 });
-//console.log(multerS3Uploader.s3.credentials);
+const s3VideoUploader = multerS3({
+    s3: s3,
+    bucket: "bibley/videos",
+    acl: "public-read",
+});
+
+const isHeroku = process.env.NODE_ENV === "production";
 
 export const localsMiddleware = (req, res, next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -30,9 +36,9 @@ export const protectMiddleware = (req, res, next) => {
 }
 export const avatarUpload = multer({ dest:"uploads/avatars/", limits: {
     fileSize: 3000000,
-}, storage: multerS3Uploader,
+}, storage: isHeroku ? s3ImageUploader : undefined,
 });
 export const videoUpload = multer({ dest:"uploads/videos/", limits: {
     fileSize: 2147483648,
-}, storage: multerS3Uploader,
+}, storage: isHeroku ? s3VideoUploader : undefined,
 });

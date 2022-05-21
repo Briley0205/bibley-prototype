@@ -88,15 +88,16 @@ export const postVideoUpload = async(req, res) => {
     const { _id } = req.session.user;
     const { video, thumb, captions } = req.files;
     const { title, description, hashtags } = req.body;
+    const isHeroku = process.env.NODE_ENV === "production";
     try{
         const newVideo = await Video.create({
             title,
             description,
             createdAt: new Date(Date.now()).toLocaleDateString(),
             hashtags: Video.formatHashtags(hashtags),
-            fileUrl: video[0].location,
-            thumbUrl: Video.changePathFormula(thumb[0].location),
-            captionsUrl: captions ? captions[0].location : "",
+            fileUrl: isHeroku ? video[0].location : video[0].path,
+            thumbUrl: isHeroku ? Video.changePathFormula(thumb[0].location) : Video.changePathFormula(thumb[0].path),
+            captionsUrl: captions ? (isHeroku ? captions[0].location : captions[0].path ) : "",
             owner: _id,
         });
         const user = await User.findById(_id);
@@ -134,6 +135,7 @@ export const postEdit = async(req, res) => {
         files: { thumb, captions },
     } = req;
     const videos = await Video.exists({ _id:id }).populate("owner");
+    const isHeroku = process.env.NODE_ENV === "production";
     if(!videos) {
         req.flash("error", "Missing video file");
         return res.status(400).render("404", {pageTitle: "Video not found"});
@@ -145,8 +147,8 @@ export const postEdit = async(req, res) => {
     await Video.findByIdAndUpdate(id, {
         title, 
         description,
-        thumbUrl: thumb ? Video.changePathFormula(thumb[0].location) : videos.thumbUrl,
-        captionsUrl: captions ? captions[0].location : videos.captionsUrl,
+        thumbUrl: thumb ? (isHeroku ? Video.changePathFormula(thumb[0].location) : Video.changePathFormula(thumb[0].path)) : videos.thumbUrl,
+        captionsUrl: captions ? (isHeroku ? captions[0].location : captions[0].path) : videos.captionsUrl,
         hashtags: Video.formatHashtags(hashtags),
     });
     req.flash("info", "video was edited");
