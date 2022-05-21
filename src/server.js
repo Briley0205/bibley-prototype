@@ -18,6 +18,7 @@ import apiRouter from "./routers/apiRouter";
 /**Set middleware */
 import flash from "express-flash";
 import { localsMiddleware } from "./middleware";
+const cors = require('cors');
 
 const app = express();
 const logger = morgan("dev");
@@ -43,6 +44,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", 'Origin,X-Requested-With,Content-type');
     next();
 })
+app.use(cors({
+    origin: '*'
+}));
 
 app.use(flash());
 app.use(localsMiddleware);
