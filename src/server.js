@@ -37,16 +37,14 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
 }));
-app.all(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", '*');
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader("Access-Control-Allow-Methods", 'GET,POST,DELETE,OPTIONS');
-    res.setHeader("Access-Control-Allow-Headers", 'X-Requested-With,content-type');
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", 'GET,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
     next();
 })
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors())
 
 app.use(flash());
 app.use(localsMiddleware);
