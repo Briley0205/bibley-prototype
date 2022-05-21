@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
     next();
 })
 app.use(cors({
-    origin: '*'
+    origin: 'https://bibley.herokuapp.com'
 }));
 
 app.use(flash());
