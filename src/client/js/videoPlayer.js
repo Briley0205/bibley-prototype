@@ -228,7 +228,8 @@ captionsBtn.addEventListener("click", () => {
     }
 });
 if (mainVideo.readyState == 4) {
-    handlePlay();
+    //handlePlay();
+    mainVideo.click();
 }
 
 const likeBtn = document.querySelector("#heart");
