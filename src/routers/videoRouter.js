@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const videoRouter = express.Router();
 
-videoRouter.all(cors({origin: "*"})).get("/:id([0-9a-f]{24})", Watch);
+videoRouter.get("/:id([0-9a-f]{24})", Watch);
 videoRouter.route("/:id([0-9a-f]{24})/edit").all(protectMiddleware).get(getEdit).post(videoUpload.fields([
     { name: "video", maxCount: 1 }, { name: "thumb", maxCount: 1 }, { name: "captions", maxCount: 1 },
 ]), postEdit);

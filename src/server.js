@@ -18,7 +18,6 @@ import apiRouter from "./routers/apiRouter";
 /**Set middleware */
 import flash from "express-flash";
 import { localsMiddleware } from "./middleware";
-const cors = require('cors');
 
 const app = express();
 const logger = morgan("dev");
@@ -37,14 +36,6 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
 }));
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Methods", 'GET,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-})
-app.use(cors())
 
 app.use(flash());
 app.use(localsMiddleware);
