@@ -1,7 +1,6 @@
 import express from "express";
 import { videoUpload, protectMiddleware } from "../middleware";
 import { getVideoUpload, postVideoUpload, Watch, getEdit, postEdit, deleteVideo } from "../controllers/videoController";
-const cors = require('cors');
 
 const videoRouter = express.Router();
 
