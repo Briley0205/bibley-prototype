@@ -24,6 +24,7 @@ const isHeroku = process.env.NODE_ENV === "production";
 export const localsMiddleware = (req, res, next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
     res.locals.loggedInUser = req.session.user || {};
+    res.locals.isHeroku = isHeroku;
     next();
 }
 export const protectMiddleware = (req, res, next) => {
