@@ -3,7 +3,6 @@ import "dotenv/config";
 
 /**Set DBs */
 import "./db";
-import "./animeInfoDB";
 
 /**Set DB models */
 import "./models/User";

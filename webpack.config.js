@@ -5,11 +5,9 @@ const BASE_JS = "./src/client/js/"
 module.exports = {
     entry: {
         main: BASE_JS + '/main.js',
-        modalBox: BASE_JS + '/modalBox.js',
         columnMenu: BASE_JS + '/columnMenu.js',
         dropUploadVideo: BASE_JS + "/dropUploadVideo.js",
         videoPlayer: BASE_JS + "/videoPlayer.js",
-        flexInfoSlider: BASE_JS + "/flexInfoSlider.js",
         commentSection: BASE_JS + "/commentSection.js",
     },
     plugins: [new MiniCssExtractPlugin({

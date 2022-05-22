@@ -1,5 +1,4 @@
 extends ../base
-include ../mixins/anime
 include ../mixins/home-video-array.pug
 
 block content
@@ -20,17 +19,3 @@ block content
                 +video(videoInfo)
         else
             li Sorry nothing found
-    div.anime-info__wrapper
-        h3.anime-sort-title Trending anime
-        div.trending-animeInfo__wrapper
-            div.trending-animeInfo__slider#slide-backBtn
-                ion-icon(name="chevron-back-outline")
-            div.trending-animeInfo__slider#slide-nextBtn
-                ion-icon(name="chevron-forward-outline")
-            div.trending-animeInfo__flex
-                each animeInfo in trendingAnime
-                        +anime(animeInfo)
-
-block scripts
-    script(type="module" src="/static/js/modalBox.js")
-    script(src="/static/js/flexInfoSlider.js")
