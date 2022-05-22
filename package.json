@@ -22,7 +22,6 @@
   "homepage": "https://github.com/Briley0205/newtube-prototype1#readme",
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "anilist-node": "^1.11.2",
     "aws-sdk": "^2.1139.0",
     "axios": "^0.19.0",
     "bcrypt": "^5.0.1",
