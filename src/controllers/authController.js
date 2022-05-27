@@ -232,6 +232,7 @@ export const finishTwitterLogin = async (req, res) => {
   const config = {
     client_id: process.env.TT_CLIENT,
     client_secret: process.env.TT_SECRET,
+    client_type: "confidential_client",
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
     grant_type: "client_credentials",
     code: req.query.code,
