@@ -266,9 +266,9 @@ export const finishTwitterLogin = async (req, res) => {
     });
     if (!user) {
       user = await User.create({
-        avatarUrl: "/static/images/Logo-piyo-profile.png",
-        username: userData.data.name,
-        email: `${userData.data.name}@twitter.com`,
+        avatarUrl: userData.data.profile_image_url,
+        username: userData.data.username,
+        email: `${userData.data.username}@twitter.com`,
         password: "",
         socialOnly: true,
       });
