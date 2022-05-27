@@ -251,7 +251,7 @@ export const finishTwitterLogin = async (req, res) => {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/oauth2/token`, {
+      await fetch(`${apiUrl}/2/oauth2/token`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
