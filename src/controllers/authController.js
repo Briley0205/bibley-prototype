@@ -255,12 +255,14 @@ export const finishTwitterLogin = async (req, res) => {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/2/oauth2/token`, {
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
-          Authorization: `Bearer ${access_token}`,
-        },
-      })
+      await fetch(
+        `${apiUrl}/2/tweets?ids=1261326399320715264,1278347468690915330`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      )
     ).json();
     console.log(userData);
     if (userData.verified_email === false) {
