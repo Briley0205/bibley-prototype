@@ -245,8 +245,7 @@ export const finishTwitterLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
-        Authorization: "Basic CONFIDENTIAL_CLIENT_AUTH_HEADER",
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     })
   ).json();
