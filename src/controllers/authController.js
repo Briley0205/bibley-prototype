@@ -226,13 +226,13 @@ export const startTwitterLogin = (req, res) => {
   const finalUrl = `${baseUrl}?${params}`;
   return res.redirect(finalUrl);
 };
+
 export const finishTwitterLogin = async (req, res) => {
   const baseUrl = "https://api.twitter.com/2/oauth2/token";
   const config = {
     client_id: process.env.TT_CLIENT,
-    client_secret: process.env.TT_SECRET,
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
-    grant_type: "authorization_code",
+    grant_type: "client_credentials",
     code: req.query.code,
     code_verifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
   };
