@@ -176,6 +176,7 @@ export const finishGoogleLogin = async (req, res) => {
       },
     })
   ).json();
+  console.log(tokenRequest);
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
     const apiUrl = "https://www.googleapis.com";
@@ -243,7 +244,7 @@ export const finishTwitterLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        "Content-type": "application/json",
         Authorization:
           "Basic " + btoa(`${process.env.TT_CLIENT}:${process.env.TT_SECRET}`),
       },
