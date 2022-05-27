@@ -217,7 +217,7 @@ export const startTwitterLogin = (req, res) => {
     response_type: "code",
     client_id: process.env.TT_CLIENT,
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
-    scope: "tweet.read%20users.read%20offline.access",
+    scope: "tweet.read users.read offline.access",
     state: "abc",
     code_challenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
     code_challenge_method: "s256",
