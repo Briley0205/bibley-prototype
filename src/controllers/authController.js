@@ -244,7 +244,7 @@ export const finishTwitterLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
         Authorization:
           "Basic " + btoa(`${process.env.TT_CLIENT}:${process.env.TT_SECRET}`),
       },
@@ -255,12 +255,13 @@ export const finishTwitterLogin = async (req, res) => {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/2/oauth2/token`, {
+      await fetch(`${apiUrl}/2/tweets`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       })
     ).json();
+    console.log(userData);
     if (userData.verified_email === false) {
       res.render("social-login", {
         errorMessage: "Can't access your email information.",
