@@ -219,7 +219,7 @@ export const startTwitterLogin = (req, res) => {
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
     response_type: "code",
     state: "abc",
-    scope: "users.read offline.access",
+    scope: "tweet.read users.read offline.access",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
@@ -228,12 +228,9 @@ export const startTwitterLogin = (req, res) => {
 export const finishTwitterLogin = async (req, res) => {
   const baseUrl = "https://api.twitter.com/2/oauth2/token";
   const config = {
-    client_id: process.env.GG_CLIENT,
-    client_secret: process.env.GG_SECRET,
-    redirect_uri: "https://bibley.herokuapp.com/auth/google/finish",
-    include_granted_scopes: true,
-    grant_type: "authorization_code",
-    code: req.query.code,
+    client_id: process.env.TT_CLIENT,
+    client_secret: process.env.TT_SECRET,
+    redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
@@ -241,15 +238,16 @@ export const finishTwitterLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        "Content-type": "application/x-www-form-urlencoded",
+        "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
       },
     })
   ).json();
+  console.log(tokenRequest);
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
-    const apiUrl = "https://www.googleapis.com";
+    const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/oauth2/v1/userinfo`, {
+      await fetch(`${apiUrl}/2/oauth2/token`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
