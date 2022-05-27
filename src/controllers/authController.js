@@ -242,7 +242,7 @@ export const finishTwitterLogin = async (req, res) => {
     await fetch(finalUrl, {
       method: "POST",
       headers: {
-        "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "Content-type": "application/x-www-form-urlencoded",
       },
     })
   ).json();
@@ -251,7 +251,7 @@ export const finishTwitterLogin = async (req, res) => {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/2/oauth2/token`, {
+      await fetch(`${apiUrl}/oauth2/token`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
