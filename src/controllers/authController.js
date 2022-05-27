@@ -255,13 +255,13 @@ export const finishTwitterLogin = async (req, res) => {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/2/users/me`, {
+      await fetch(`${apiUrl}/2/users/me?user.fields=verified`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       })
     ).json();
-    console.log(userData);
+    console.log(userData.data);
     if (userData.verified_email === false) {
       res.render("social-login", {
         errorMessage: "Can't access your email information.",
@@ -271,9 +271,9 @@ export const finishTwitterLogin = async (req, res) => {
     let user = await User.findOne({ email: userData.email });
     if (!user) {
       user = await User.create({
-        avatarUrl: userData.picture,
-        username: userData.name,
-        email: userData.email,
+        avatarUrl: userData.data.profile_image_url,
+        username: userData.data.name,
+        email: `${userData.data.name}@twitter.com`,
         password: "",
         socialOnly: true,
       });
