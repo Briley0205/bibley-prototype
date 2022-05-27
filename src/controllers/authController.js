@@ -235,7 +235,7 @@ export const finishTwitterLogin = async (req, res) => {
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
     grant_type: "authorization_code",
     code: req.query.code,
-    code_verifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+    code_verifier: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
