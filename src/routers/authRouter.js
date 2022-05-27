@@ -1,7 +1,23 @@
 import express from "express";
 
-import { getAuth, getEmailJoin, postEmailJoin, getEmailLogin, postEmailLogin, getSocialLogin } from "../controllers/userController";
-import { startGithubLogin, finishGithubLogin, startKakaoLogin, finishKakaoLogin, startGoogleLogin, finishGoogleLogin } from "../controllers/authController";
+import {
+  getAuth,
+  getEmailJoin,
+  postEmailJoin,
+  getEmailLogin,
+  postEmailLogin,
+  getSocialLogin,
+} from "../controllers/userController";
+import {
+  startGithubLogin,
+  finishGithubLogin,
+  startKakaoLogin,
+  finishKakaoLogin,
+  startGoogleLogin,
+  finishGoogleLogin,
+  startTwitterLogin,
+  finishTwitterLogin,
+} from "../controllers/authController";
 
 const authRouter = express.Router();
 
@@ -16,7 +32,7 @@ authRouter.get("/kakao/start", startKakaoLogin);
 authRouter.get("/kakao/finish", finishKakaoLogin);
 authRouter.get("/google/start", startGoogleLogin);
 authRouter.get("/google/finish", finishGoogleLogin);
-
+authRouter.get("/twitter/start", startTwitterLogin);
+authRouter.get("/twitter/finish", finishTwitterLogin);
 
 export default authRouter;
-
