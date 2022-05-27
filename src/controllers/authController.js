@@ -176,7 +176,6 @@ export const finishGoogleLogin = async (req, res) => {
       },
     })
   ).json();
-  console.log(tokenRequest);
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
     const apiUrl = "https://www.googleapis.com";
@@ -260,9 +259,8 @@ export const finishTwitterLogin = async (req, res) => {
         },
       })
     ).json();
-    console.log(userData.data);
     let user = await User.findOne({
-      email: `${userData.data.name}@twitter.com`,
+      email: `${userData.data.username}@twitter.com`,
     });
     if (!user) {
       user = await User.create({
