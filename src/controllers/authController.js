@@ -239,16 +239,14 @@ export const finishTwitterLogin = async (req, res) => {
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
-  const tokenRequest = await (
-    await fetch(finalUrl, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-        Authorization:
-          "Basic " + btoa(`${process.env.TT_CLIENT}:${process.env.TT_SECRET}`),
-      },
-    })
-  ).json();
+  const tokenRequest = await fetch(finalUrl, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      Authorization:
+        "Basic " + btoa(`${process.env.TT_CLIENT}:${process.env.TT_SECRET}`),
+    },
+  });
   console.log(tokenRequest);
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
