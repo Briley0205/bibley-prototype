@@ -220,7 +220,7 @@ export const startTwitterLogin = (req, res) => {
     scope: "tweet.read users.read offline.access",
     state: "abc",
     code_challenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-    code_challenge_method: "s256",
+    code_challenge_method: "plain",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
@@ -232,7 +232,7 @@ export const finishTwitterLogin = async (req, res) => {
   const config = {
     client_id: process.env.TT_CLIENT,
     client_secret: process.env.TT_SECRET,
-    client_type: "confidential_client",
+    client_type: "public_client",
     scope: "tweet.read users.read offline.access",
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
     grant_type: "client_credentials",
@@ -246,6 +246,7 @@ export const finishTwitterLogin = async (req, res) => {
       method: "POST",
       headers: {
         "Content-type": "application/x-www-form-urlencoded",
+        Authorization: "Basic CONFIDENTIAL_CLIENT_AUTH_HEADER",
       },
     })
   ).json();
