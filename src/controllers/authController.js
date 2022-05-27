@@ -214,12 +214,13 @@ export const finishGoogleLogin = async (req, res) => {
 export const startTwitterLogin = (req, res) => {
   const baseUrl = "https://twitter.com/i/oauth2/authorize";
   const config = {
-    oauth_consumer_key: process.env.TT_CLIENT,
-    oauth_consumer_secret: process.env.TT_SECRET,
-    oauth_callback: "https://bibley.herokuapp.com/auth/twitter/finish",
     response_type: "code",
+    client_id: process.env.TT_CLIENT,
+    redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
+    scope: "tweet.read%20users.read%20offline.access",
     state: "abc",
-    scope: "tweet.read users.read offline.access",
+    code_challenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+    code_challenge_method: "s256",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
@@ -231,6 +232,7 @@ export const finishTwitterLogin = async (req, res) => {
     client_id: process.env.TT_CLIENT,
     client_secret: process.env.TT_SECRET,
     oauth_callback: "https://bibley.herokuapp.com/auth/twitter/finish",
+    grant_type: "authorization_code",
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
