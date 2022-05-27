@@ -250,28 +250,23 @@ export const finishTwitterLogin = async (req, res) => {
       },
     })
   ).json();
-  console.log(tokenRequest);
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
     const apiUrl = "https://api.twitter.com";
     const userData = await (
-      await fetch(`${apiUrl}/2/users/me?user.fields=verified`, {
+      await fetch(`${apiUrl}/2/users/me?user.fields=profile_image_url`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       })
     ).json();
     console.log(userData.data);
-    if (userData.verified_email === false) {
-      res.render("social-login", {
-        errorMessage: "Can't access your email information.",
-      });
-      res.redirect("/login");
-    }
-    let user = await User.findOne({ email: userData.email });
+    let user = await User.findOne({
+      email: `${userData.data.name}@twitter.com`,
+    });
     if (!user) {
       user = await User.create({
-        avatarUrl: userData.data.profile_image_url,
+        avatarUrl: "/static/images/Logo-piyo-profile.png",
         username: userData.data.name,
         email: `${userData.data.name}@twitter.com`,
         password: "",
