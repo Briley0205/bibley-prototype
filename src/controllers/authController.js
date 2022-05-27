@@ -231,8 +231,9 @@ export const finishTwitterLogin = async (req, res) => {
   const config = {
     client_id: process.env.TT_CLIENT,
     client_secret: process.env.TT_SECRET,
-    oauth_callback: "https://bibley.herokuapp.com/auth/twitter/finish",
+    redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
     grant_type: "authorization_code",
+    code: req.query.code,
   };
   const params = new URLSearchParams(config).toString();
   const finalUrl = `${baseUrl}?${params}`;
