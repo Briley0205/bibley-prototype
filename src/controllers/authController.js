@@ -232,10 +232,8 @@ export const finishTwitterLogin = async (req, res) => {
   const config = {
     client_id: process.env.TT_CLIENT,
     client_secret: process.env.TT_SECRET,
-    client_type: "third_party_app",
-    scope: "tweet.read users.read offline.access",
     redirect_uri: "https://bibley.herokuapp.com/auth/twitter/finish",
-    grant_type: "client_credentials",
+    grant_type: "authorization_code",
     code: req.query.code,
     code_verifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
   };
@@ -246,6 +244,8 @@ export const finishTwitterLogin = async (req, res) => {
       method: "POST",
       headers: {
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+        Authorization:
+          "Basic " + btoa(`${process.env.TT_CLIENT}:${process.env.TT_SECRET}`),
       },
     })
   ).json();
