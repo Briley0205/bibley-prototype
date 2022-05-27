@@ -225,8 +225,8 @@ export const startTwitterLogin = (req, res) => {
   const finalUrl = `${baseUrl}?${params}`;
   return res.redirect(finalUrl);
 };
-export const finishTwitterLogin = (req, res) => {
-    const baseUrl = "https://api.twitter.com/2/oauth2/token";
+export const finishTwitterLogin = async (req, res) => {
+  const baseUrl = "https://api.twitter.com/2/oauth2/token";
   const config = {
     client_id: process.env.GG_CLIENT,
     client_secret: process.env.GG_SECRET,
