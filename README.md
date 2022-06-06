@@ -1,33 +1,19 @@
-# Newtube Reloaded
+# 👀 비블리 (유튜브 클론) 회고록💭
 
-/
-/join
-/login
-/search
+- 사용 기술
+- 프로젝트 시작
+- 추가적인 기능
+- 배포
 
-/users/:id -> See User
-/users/logout
-/users/edit -> Edit my profile
-/users/delete
+---
 
-/videos/:id(id of video) -> Watch Video
-/videos/:id/edit
-/videos/:id/delete
-/videos/upload
+## 프로젝트 시작
 
-/videos/comments
-/videos/comments/delete
+## 사용 기술
 
-else {
-const user = await User.create({
-name: userData.name,
-username: userData.login,
-email: emailObj.email,
-password: '',
-socialOnly: true,
-location: userData.location,
-});
-req.session.loggedIn = true;
-console.log(req.session.user);
-req.session.loggedInUser = user;
-return res.redirect("/");
+## 추가적인 기능
+
+## 프로젝트 기간
+
+2022.03.07 ~ 2022.05.28
+2개월 22일
