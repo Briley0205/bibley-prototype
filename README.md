@@ -10,6 +10,8 @@
 ### 프로젝트 시작
 
 프로젝트 진행과 프로그래밍에 있어서, 전반적인 상을 익히기 위해
+처음으로 가진 풀스택 프로젝트,,, 라고 부르고 싶지만
+뜯어보고 관찰하는 것으로 시작한 프로그램이라 보는 게 적합할 겁니다.
 
 ### 사용 기술
 
@@ -25,7 +27,11 @@
 
 #### BackEnd
 
+<img src="./read_src/tech_icon/nodejs.png" width="75" height="75"/>
+
 #### DataBase
+
+<img src="./read_src/tech_icon/mongodb.png" width="75" height="75"/>
 
 ### 추가적인 기능
 
