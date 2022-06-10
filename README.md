@@ -13,7 +13,9 @@
 처음으로 가진 풀스택 프로젝트(?) 라고 부르고 싶지만, 뜯어보고 관찰하는 것으로 <br>
 시작한 프로그램이라 보는 게 적합할 겁니다.
 
-이 프로젝트를 시작한 이유 ? 처음 접했을 때 깃헙이나, 외부 사이트의 호스팅
+#### 이 프로젝트를 시작한 이유 ?
+
+처음 접했을 때 깃헙이나, 외부 사이트의 호스팅
 <br>
 기능에 의존하지 않고, 자체 서버를 배포할 수 있다는 말에 혹해서 시작하였습니다.
 
@@ -22,7 +24,7 @@
 유저와 브라우저, 그리고 서버간의 춤에 직접
 간섭할 수 있었던 점이 가장 흥미로웠습니다.
 
-### 프로젝트 진행 시 염두에 둔 것
+#### 프로젝트 진행 시 염두에 둔 것
 
 > "생각만 하지 말고 찾아 보아라"
 >
@@ -60,15 +62,38 @@
 
 ### 추가적인 기능
 
+<details>
+<summary>Drag & Drop Video UPload</summary>
+
 #### Drag & Drop Video UPload
+
+</details>
+<details>
+<summary>++Video Captions UPload</summary>
 
 #### ++Video Captions UPload
 
+</details>
+<details>
+<summary>Kakao, Twitter, Google, Github 간편 로그인</summary>
+
 #### Kakao, Twitter, Google, Github 소셜 간편 로그인
+
+</details>
+<details>
+<summary>실시간 댓글++ && 좋아요 && 구독</summary>
 
 #### 실시간 댓글++ && 좋아요 && 구독
 
+</details>
+<details>
+<summary>Switch Themes</summary>
+
 #### Switch Themes
+
+</details>
+
+### 배포
 
 ### 프로젝트 기간
 
