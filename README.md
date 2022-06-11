@@ -73,7 +73,7 @@
 <details>
 <summary>소스 코드 보기</summary>
 
-#### ./src/client/js/dropUploadVideo.js
+##### ./src/client/js/dropUploadVideo.js
 
 ```
 //when drop it
