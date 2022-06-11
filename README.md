@@ -131,6 +131,8 @@ const displayVideoFile = () => {
 
 #### 적용 사진
 
+<img src="./read_src/screen_shot/videoDrop_sreen.gif" width="600"/>
+
 </details>
 <details>
 <summary>++Video Captions UPLoad</summary>
