@@ -22,7 +22,7 @@
 배움을 통해 마주한 새로운 기술을 하나의 퍼즐조각으로
 실제 웹에선 어떤 식으로 적용할지 생각하며
 유저와 브라우저, 그리고 서버간의 춤에 직접
-간섭할 수 있었던 점이 가장 흥미로웠습니다.
+간섭할 수 있었던 점이 흥미로웠습니다.
 
 #### 프로젝트 진행 시 염두에 둔 것
 
@@ -63,15 +63,70 @@
 ### 추가적인 기능
 
 <details>
-<summary>Drag & Drop Video UPload</summary>
+<summary>Drag & Drop Video UPLoad</summary>
 
-#### Drag & Drop Video UPload
+#### Drag & Drop Video UPLoad
+
+리액트 수업으로 넘아가기 전, 바닐라 JS로 가능한 한 모든 인터렉티브한 부분을 구현해 보고, 기반을 다지기 위해 만들어본 추가적인 기능입니다.
+
+<!--코드 이미지-->
+
+```
+//when drop it
+videoDragArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    videoDragText.textContent = "Release to upload";
+    videoDragArea.classList.add("active");
+});
+
+videoDragArea.addEventListener("dragleave", (event) => {
+    videoDragText.textContent = "Drag & Drop";
+    videoDragArea.classList.remove("active");
+});
+
+videoDragArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+
+    videoDragText.textContent = "Calling video data. Please wait...";
+    videoFile = event.dataTransfer.files[0];
+    videoInputElement.files = event.dataTransfer.files;
+    console.log(videoInputElement.files);
+    videoInputElement.setAttribute("value", `${videoFile}`);
+    displayVideoFile();
+});
+
+const displayVideoFile = () => {
+    let fileType = videoFile.type;
+    let validExtensions = ['video/mp4', 'video/mov', 'video/avi', 'video/mkv'];
+    //let fileSize = videoFile.size;  && fileSize < 125829120
+    if(validExtensions.includes(fileType)) {
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+            let fileURL = fileReader.result;
+            let videoTag = `<video src="${fileURL}" autoplay controls>`;
+            videoDragArea.innerHTML = videoTag;
+        };
+        fileReader.readAsDataURL(videoFile);
+    } else {
+        alert("Wrong file type. It supports .mp4 .mov .avi files.");
+        videoDragArea.classList.remove("active");
+    }
+}
+```
+
+#### 구현 중 마주한 문제 ?
+
+파일 리더를 통해 원하는 html element 안에 fileURL이 들어간 비디오 태그를 집어넣어 drop된 비디오를 보여주는 방식으로 구현해 보았습니다. 비디오를 원하는 구역에 불러왔을 지라도, 원래 비디오 데이터를 받을 수 요소는 form에 input이었기 때문에, 파일 드롭 후 제출 버튼 클릭 시, 데이터 베이스에 올라가지 않는 경우가 발생했습니다.
+
+#### 이 문제를 고친 방법은 ?
+
+#### 적용 사진
 
 </details>
 <details>
-<summary>++Video Captions UPload</summary>
+<summary>++Video Captions UPLoad</summary>
 
-#### ++Video Captions UPload
+#### Video Captions UPLoad
 
 </details>
 <details>
