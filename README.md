@@ -70,6 +70,8 @@
 리액트 수업으로 넘아가기 전, 바닐라 JS로 가능한 한 모든 인터렉티브한 부분을 구현해 보고, 기반을 다지기 위해 만들어본 추가적인 기능입니다.
 
 <!--코드 이미지-->
+<details>
+<summary>src code</summary>
 
 ```
 //when drop it
@@ -98,7 +100,6 @@ videoDragArea.addEventListener("drop", (event) => {
 const displayVideoFile = () => {
     let fileType = videoFile.type;
     let validExtensions = ['video/mp4', 'video/mov', 'video/avi', 'video/mkv'];
-    //let fileSize = videoFile.size;  && fileSize < 125829120
     if(validExtensions.includes(fileType)) {
         let fileReader = new FileReader();
         fileReader.onload = () => {
@@ -113,6 +114,8 @@ const displayVideoFile = () => {
     }
 }
 ```
+
+</details>
 
 #### 구현 중 마주한 문제 ?
 
