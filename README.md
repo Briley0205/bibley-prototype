@@ -71,7 +71,9 @@
 
 <!--코드 이미지-->
 <details>
-<summary>src code</summary>
+<summary>소스 코드 보기</summary>
+
+#### ./src/client/js/dropUploadVideo.js
 
 ```
 //when drop it
@@ -117,11 +119,15 @@ const displayVideoFile = () => {
 
 </details>
 
-#### 구현 중 마주한 문제 ?
+#### Before, 구현 중 마주한 문제 ?
 
-파일 리더를 통해 원하는 html element 안에 fileURL이 들어간 비디오 태그를 집어넣어 drop된 비디오를 보여주는 방식으로 구현해 보았습니다. 비디오를 원하는 구역에 불러왔을 지라도, 원래 비디오 데이터를 받을 수 요소는 form에 input이었기 때문에, 파일 드롭 후 제출 버튼 클릭 시, 데이터 베이스에 올라가지 않는 경우가 발생했습니다.
+파일 리더를 통해 원하는 html element 안에 fileURL이 들어간 비디오 태그를 집어넣어 drop된 비디오를 보여주는 방식으로 구현해 보았습니다.
+<br>
+비디오를 원하는 구역에 불러왔을 지라도, 원래 비디오 데이터를 받을 수 요소는 form에 input이었기 때문에, 파일 드롭 후 제출 버튼 클릭 시, 데이터 베이스에 올라가지 않는 경우가 발생했습니다.
 
-#### 이 문제를 고친 방법은 ?
+#### After, 이 문제를 고친 방법은 ?
+
+비디오 파일을 읽어올 때, input element와 JS event dataTrasfer의 files 속성을 이용해, 파일 로딩 시 input 값을 부여하는 것으로, 이 문제가 발생하지 않도록 수정하였습니다.
 
 #### 적용 사진
 
