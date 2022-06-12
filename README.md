@@ -142,6 +142,41 @@ const displayVideoFile = () => {
 
 #### Video Captions UPLoad
 
+비디오를 업로드 하기 위한 사이트 인지라, 자막 업로드 기능이 없을 시, 비디오 시청이 매우 불편할 것 같아 만들어본 기능입니다.
+
+<details>
+<summary>소스 코드 보기</summary>
+
+#### ./src/controllers/videoController.js
+
+```
+const { _id } = req.session.user;
+    const { video, thumb, captions } = req.files;
+    const { title, description, hashtags } = req.body;
+    const isHeroku = process.env.NODE_ENV === "production";
+    try{
+        const newVideo = await Video.create({
+            title,
+            description,
+            createdAt: new Date(Date.now()).toLocaleDateString(),
+            hashtags: Video.formatHashtags(hashtags),
+            fileUrl: isHeroku ? video[0].location : video[0].path,
+            thumbUrl: isHeroku ? Video.changePathFormula(thumb[0].location) : Video.changePathFormula(thumb[0].path),
+            captionsUrl: captions ? (isHeroku ? captions[0].location : captions[0].path ) : "",
+            owner: _id,
+        });
+```
+
+</details>
+
+#### Before, 구현 중 발견한 문제점 ?
+
+자막 url을 저장할 때, rep.files.captions 가 null 인 경우, 자막 업로드에 실패하는 에러를 발견했습니다.
+
+#### After, 이 문제를 해결한 방법은 ?
+
+업로드 전, 선택된 자막 파일이 있는 지 묻는 if문을 통해, 선택된 파일이 있을 시 파일 경로를 저장하고, 없을 시 공백으로 두어 해결하였습니다.
+
 </details>
 <details>
 <summary>Kakao, Twitter, Google, Github 간편 로그인</summary>
@@ -163,6 +198,10 @@ const displayVideoFile = () => {
 </details>
 
 ### 배포
+
+#### 배포 링크
+
+<a href="https://bibley.herokuapp.com/">https://bibley.herokuapp.com/</a>
 
 ### 프로젝트 기간
 
