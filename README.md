@@ -183,17 +183,23 @@ const { _id } = req.session.user;
 
 #### Kakao, Twitter, Google, Github 소셜 간편 로그인
 
+- 아직 작성 중... 💨
+
 </details>
 <details>
 <summary>실시간 댓글++ && 좋아요 && 구독</summary>
 
 #### 실시간 댓글++ && 좋아요 && 구독
 
+- 아직 작성 중... 💨
+
 </details>
 <details>
 <summary>Switch Themes</summary>
 
 #### Switch Themes
+
+- 아직 작성 중... 💨
 
 </details>
 
