@@ -69,56 +69,6 @@
 
 리액트 수업으로 넘아가기 전, 바닐라 JS로 가능한 한 모든 인터렉티브한 부분을 구현해 보고, 기반을 다지기 위해 만들어본 추가적인 기능입니다.
 
-<!--코드 이미지-->
-<details>
-<summary>소스 코드 보기</summary>
-
-##### ./src/client/js/dropUploadVideo.js
-
-```
-//when drop it
-videoDragArea.addEventListener("dragover", (event) => {
-    event.preventDefault();
-    videoDragText.textContent = "Release to upload";
-    videoDragArea.classList.add("active");
-});
-
-videoDragArea.addEventListener("dragleave", (event) => {
-    videoDragText.textContent = "Drag & Drop";
-    videoDragArea.classList.remove("active");
-});
-
-videoDragArea.addEventListener("drop", (event) => {
-    event.preventDefault();
-
-    videoDragText.textContent = "Calling video data. Please wait...";
-    videoFile = event.dataTransfer.files[0];
-    videoInputElement.files = event.dataTransfer.files;
-    console.log(videoInputElement.files);
-    videoInputElement.setAttribute("value", `${videoFile}`);
-    displayVideoFile();
-});
-
-const displayVideoFile = () => {
-    let fileType = videoFile.type;
-    let validExtensions = ['video/mp4', 'video/mov', 'video/avi', 'video/mkv'];
-    if(validExtensions.includes(fileType)) {
-        let fileReader = new FileReader();
-        fileReader.onload = () => {
-            let fileURL = fileReader.result;
-            let videoTag = `<video src="${fileURL}" autoplay controls>`;
-            videoDragArea.innerHTML = videoTag;
-        };
-        fileReader.readAsDataURL(videoFile);
-    } else {
-        alert("Wrong file type. It supports .mp4 .mov .avi files.");
-        videoDragArea.classList.remove("active");
-    }
-}
-```
-
-</details>
-
 #### Before, 구현 중 마주한 문제 ?
 
 파일 리더를 통해 원하는 html element 안에 fileURL이 들어간 비디오 태그를 집어넣어 drop된 비디오를 보여주는 방식으로 구현해 보았습니다.
